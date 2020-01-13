@@ -1,0 +1,11 @@
+{
+  "en":{
+  },
+  "es": {
+    "BUTTON_YES": "Si",
+    "BUTTON_NO": "No",
+    "DIALOG_TITLE": "Desea imprimir?"
+  },
+  "ca":{
+  }
+}

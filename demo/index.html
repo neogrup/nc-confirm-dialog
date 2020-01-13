@@ -1,0 +1,90 @@
+<!doctype html>
+<!--
+@license
+Copyright (c) 2017 Neo
+-->
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+  <title>nc-confirmation-dialog demo</title>
+
+  <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+  <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
+
+  <script type="module">
+    import '@polymer/iron-demo-helpers/demo-pages-shared-styles';
+    import '@polymer/iron-demo-helpers/demo-snippet';
+  </script>
+
+  <script type="module" src="../nc-confirmation-dialog.js"></script>
+
+  <custom-style>
+    <style is="custom-style" include="demo-pages-shared-styles">
+    </style>
+  </custom-style>
+
+</head>
+<body>
+  <div class="vertical-section-container centered">
+    <h3>nc-confirmation-dialog demo</h3>
+    <demo-snippet>
+      <template>
+        <demo-nc-confirmation-dialog></demo-nc-confirmation-dialog>
+      </template>
+    </demo-snippet>
+  </div>
+
+  <script type="module">
+    import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
+    import '@polymer/paper-button/paper-button.js';
+
+    class DemoNcConfirmationDialog extends PolymerElement {
+      static get template() {
+        return html`
+          <style>
+            :host {
+              color: #fff;
+              --app-secondary-color: #253855;
+              display: block;
+            }
+            paper-button{
+              margin: 10px 5px;
+              background-color: var(--app-secondary-color);
+              color: white;
+            }
+          </style>
+
+          <paper-button raised on-tap="_open">Test</paper-button>      
+
+          <nc-confirmation-dialog
+              id="confirmationDialog"
+              language="es"
+              dialog-icon="print"
+              dialog-title="DIALOG_TITLE"
+              dialog-confirm-button-title="BUTTON_YES"
+              dialog-decline-button-title="BUTTON_NO"
+              url-translate="/demo/data/translations.json"
+              on-confirm="_confirm"
+              on-decline="_decline">
+          </nc-confirmation-dialog>
+        `;
+      }
+
+      _open(){
+        this.$.confirmationDialog.open();
+      }
+
+      _confirm(){
+        console.log('confirm !')
+      }
+
+      _decline(){
+        console.log('decline !')
+      }
+    }
+    window.customElements.define('demo-nc-confirmation-dialog', DemoNcConfirmationDialog);
+  </script>
+</body>
+</html>
