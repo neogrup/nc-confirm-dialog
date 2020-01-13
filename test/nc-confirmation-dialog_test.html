@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>nc-yes-no-dialog test</title>
+    <title>nc-confirmation-dialog test</title>
 
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../node_modules/@polymer/test-fixture/test-fixture.js"></script>
@@ -12,31 +12,31 @@
     <script src="../node_modules/chai/chai.js"></script>
     <script src="../node_modules/wct-mocha/wct-mocha.js"></script>
 
-    <script type="module" src="../nc-yes-no-dialog.js"></script>
+    <script type="module" src="../nc-confirmation-dialog.js"></script>
   </head>
   <body>
 
     <test-fixture id="BasicTestFixture">
       <template>
-        <nc-yes-no-dialog></nc-yes-no-dialog>
+        <nc-confirmation-dialog></nc-confirmation-dialog>
       </template>
     </test-fixture>
 
     <test-fixture id="ChangedPropertyTestFixture">
       <template>
-        <nc-yes-no-dialog prop1="new-prop1"></nc-yes-no-dialog>
+        <nc-confirmation-dialog prop1="new-prop1"></nc-confirmation-dialog>
       </template>
     </test-fixture>
 
     <script type="module">
-      suite('nc-yes-no-dialog', () => {
+      suite('nc-confirmation-dialog', () => {
 
         test('instantiating the element with default properties works', () => {
           const element = fixture('BasicTestFixture');
-          assert.equal(element.prop1, 'nc-yes-no-dialog');
+          assert.equal(element.prop1, 'nc-confirmation-dialog');
           const elementShadowRoot = element.shadowRoot;
           const elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.innerHTML, 'Hello nc-yes-no-dialog!');
+          assert.equal(elementHeader.innerHTML, 'Hello nc-confirmation-dialog!');
         });
 
         test('setting a property on the element works', () => {

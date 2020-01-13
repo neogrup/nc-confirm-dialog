@@ -1,4 +1,4 @@
-# \<nc-yes-no-dialog\>
+# \<nc-confirm-dialog\>
 
 
 
