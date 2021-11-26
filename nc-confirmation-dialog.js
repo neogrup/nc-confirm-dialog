@@ -39,6 +39,14 @@ class NcConfirmationDialog extends mixinBehaviors([AppLocalizeBehavior], Polymer
           background-color: var(--app-secondary-color);
           color: white;
         }
+
+        paper-button.delete:not([disabled]){
+          background-color: var(--error-color);
+        }
+
+        paper-button.accept:not([disabled]){
+          background-color: var(--success-color);
+        }
       </style>
 
       <paper-dialog id="confirmationDialog" modal dialog>
@@ -46,11 +54,11 @@ class NcConfirmationDialog extends mixinBehaviors([AppLocalizeBehavior], Polymer
           <iron-icon icon="{{dialogIcon}}"></iron-icon><h3>{{localize(dialogTitle)}}</h3>
         </div>
         <div class="content">
-          <!-- TODO: subtitle -->
+          {{localize(dialogSubTitle)}}
         </div>
         <div class="buttons">
-          <paper-button raised on-tap="_decline" style="background-color: #F44336;margin-right: 10px;">{{localize(dialogDeclineButtonTitle)}}</paper-button>
-          <paper-button raised on-tap="_confirm">{{localize(dialogConfirmButtonTitle)}}</paper-button>
+          <paper-button raised class="delete" on-tap="_decline" style="margin-right: 10px;" hidden\$="[[dialogDeclineButtonDisabled]]">{{localize(dialogDeclineButtonTitle)}}</paper-button>
+          <paper-button raised class="accept" on-tap="_confirm">{{localize(dialogConfirmButtonTitle)}}</paper-button>
         </div>
       </paper-dialog>
     `;
@@ -65,13 +73,18 @@ class NcConfirmationDialog extends mixinBehaviors([AppLocalizeBehavior], Polymer
       dialogOrigin: String,
       dialogIcon: String,
       dialogTitle: String,
+      dialogSubTitle: String,
       dialogConfirmButtonTitle: String,
       dialogDeclineButtonTitle: String,
       // Product, ticket, etc.
       dialogDataAux: {
         type: Object,
         value: {}
-      }
+      },
+      dialogDeclineButtonDisabled: {
+        type: Boolean,
+        value: false
+      },
     };
   }
 
