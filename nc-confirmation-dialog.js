@@ -14,6 +14,10 @@ class NcConfirmationDialog extends mixinBehaviors([AppLocalizeBehavior], Polymer
   static get template() {
     return html`
       <style>
+
+        .content{
+          margin-top: 0px;
+        }
         paper-dialog {
           width: 400px;
         }
@@ -31,7 +35,7 @@ class NcConfirmationDialog extends mixinBehaviors([AppLocalizeBehavior], Polymer
         .buttons {
           @apply --layout-horizontal;
           @apply --layout-center;
-          @apply --layout-center-justified;
+          /* @apply --layout-center-justified; */
         }
 
         paper-button{
@@ -54,7 +58,8 @@ class NcConfirmationDialog extends mixinBehaviors([AppLocalizeBehavior], Polymer
           <iron-icon icon="{{dialogIcon}}"></iron-icon><h3>{{localize(dialogTitle)}}</h3>
         </div>
         <div class="content">
-          {{localize(dialogSubTitle)}}
+          <div>{{localize(dialogSubTitle1)}}</div>
+          <div>{{localize(dialogSubTitle2)}}</div>
         </div>
         <div class="buttons">
           <paper-button raised class="delete" on-tap="_decline" style="margin-right: 10px;" hidden\$="[[dialogDeclineButtonDisabled]]">{{localize(dialogDeclineButtonTitle)}}</paper-button>
@@ -73,7 +78,8 @@ class NcConfirmationDialog extends mixinBehaviors([AppLocalizeBehavior], Polymer
       dialogOrigin: String,
       dialogIcon: String,
       dialogTitle: String,
-      dialogSubTitle: String,
+      dialogSubTitle1: String,
+      dialogSubTitle2: String,
       dialogConfirmButtonTitle: String,
       dialogDeclineButtonTitle: String,
       // Product, ticket, etc.
